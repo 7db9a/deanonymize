@@ -1,12 +1,19 @@
 import csv
 import fileinput
 import os
+import argparse
 
-# This is the csv file where the names and their aliases are stored
-csv_file = 'names_and_aliases.csv'
+# Create the parser
+parser = argparse.ArgumentParser(description='Process a directory and a csv file.')
+parser.add_argument('docs_directory', type=str, help='The directory to process')
+parser.add_argument('csv_file', type=str, help='The CSV file to use')
 
-# This is the path to the directory that contains the documents
-docs_directory = '/app/filebot-store-00'
+# Parse the arguments
+args = parser.parse_args()
+
+# Now we use the arguments
+csv_file = args.csv_file
+docs_directory = args.docs_directory
 
 # First, we need to read the csv file and create a dictionary where the keys are the aliases
 # and the values are the names
